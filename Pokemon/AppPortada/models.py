@@ -38,3 +38,5 @@ class PokemonAtaque(models.Model):
     pokemon_id = models.ForeignKey(Pokemon, on_delete=CASCADE)
     cantidad = models.IntegerField(default=1)
 
+    def __str__(self):
+        return self.ataque_id

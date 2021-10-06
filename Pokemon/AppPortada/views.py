@@ -20,19 +20,12 @@ class CatalogoPokemon(View):
 
 
     def get(self, request, id = 0):
-        if (id > 0):
-            pokemons = list(Pokemon.objects.filter(id = id).values())
-            if len(pokemons) > 0:
-                pokemon = pokemons[0]
-                datos = {'message': "Success", 'movies': pokemon}
-            else:
-                datos = {'message': "poke not found..."}
-            return JsonResponse(datos)
-        pokemones = list(Pokemon.objects.filter(pokemon_type='Fuego').values())
+
+        pokemones = list(Ataque.objects.values())
         if len(pokemones) > 0:
             datos = {'message': "Success", 'pokemons': pokemones}
         else:
-            datos = {'message': "pokemons dont found :("}
+            datos = {'message': "ataque dont found :("}
         return JsonResponse(datos)
 
 
