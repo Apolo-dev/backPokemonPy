@@ -18,7 +18,7 @@ class Ataque(models.Model):
 
 
 class Pokemon(models.Model):
-    #ataques = models.ManyToManyField(Ataque, verbose_name="ataques", through='PokemonAtaque')
+    ataques = models.ManyToManyField(Ataque, through='PokemonAtaque')
     pokemon_name = models.CharField(max_length=45)
     pokemon_type = models.CharField(max_length=45)
     pokemon_image = models.ImageField(upload_to="pokemones",null = True)
