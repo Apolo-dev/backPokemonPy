@@ -5,4 +5,3 @@ from .models import Ataque, Pokemon
 
 admin.site.register(Ataque)
 admin.site.register(Pokemon)
-

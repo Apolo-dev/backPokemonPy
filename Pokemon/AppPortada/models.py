@@ -18,9 +18,10 @@ class Ataque(models.Model):
 
 
 class Pokemon(models.Model):
-    ataques = models.ManyToManyField(Ataque, through='PokemonAtaque')
+    ataques = models.ManyToManyField(Ataque)
     pokemon_name = models.CharField(max_length=45)
     pokemon_type = models.CharField(max_length=45)
+    pokemon_life = models.IntegerField()
     pokemon_image = models.ImageField(upload_to="pokemones",null = True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -33,10 +34,3 @@ class Pokemon(models.Model):
         ordering = ["-created"]
 
 
-class PokemonAtaque(models.Model):
-    ataque_id = models.ForeignKey(Ataque, on_delete=CASCADE)
-    pokemon_id = models.ForeignKey(Pokemon, on_delete=CASCADE)
-    cantidad = models.IntegerField(default=1)
-
-    def __str__(self):
-        return self.ataque_id
