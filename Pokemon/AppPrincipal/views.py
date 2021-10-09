@@ -1,3 +1,4 @@
+from django import views
 from django.shortcuts import render
 from django.http.response import JsonResponse
 from django.views import View
@@ -20,11 +21,18 @@ class PrincipalPokemon(View):
 
     def get(self, request):
         pokemones = list(Pokemon.objects.values())
+        tipos = [
+            {
+                "Fuego": list(Pokemon.objects.filter(tipe_pokemon='Fuego').values())
+            }
+        ]
+        
         #print(ataquesPokemon)
-        if len(pokemones) > 0:
+        if len(pokemones) > 0 and len(tipos) > 0:
             datos = {
                 'message': "Success",
-                'pokemons': pokemones
+                #'pokemons': pokemones,
+                'tipos': tipos
                 }
         else:
             datos = {
@@ -45,6 +53,7 @@ class AtaquesPokemon(View):
     def get(self, request):
         
         pokemones1 = list(Pokemon.objects.values())
+        #fuegos = list(Pokemon.objects.filter(tipe_pokemon = 'Fuego'))
         ataquePoke1 = list(Ataque.objects.filter(pokemon__id = 1).values())
         ataquePoke2 = list(Ataque.objects.filter(pokemon__id = 2). values())
         ataquePoke3 = list(Ataque.objects.filter(pokemon__id = 3).values())
@@ -90,5 +99,48 @@ class AtaquesPokemon(View):
         else:
             datos = {
                 'message': "attacks not found :("
+                }
+        return JsonResponse(datos)
+
+
+class FuegoPokemon(View):
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def get(self, request):
+        fuego = list(Pokemon.objects.filter(tipe_pokemon ='Fuego').values())
+        
+        #print(ataquesPokemon)
+        if len(fuego) > 0:
+            datos = {
+                'message': "Success",
+                'pokemonFuego': fuego,
+                }
+        else:
+            datos = {
+                'message': "pokemons not found :("
+                }
+        return JsonResponse(datos)
+
+class DragonPokemon(View):
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def get(self, request):
+        dragon = list(Pokemon.objects.filter(tipe_pokemon ='Dragon').values())
+        
+        #print(ataquesPokemon)
+        if len(dragon) > 0:
+            datos = {
+                'message': "Success",
+                'pokemonDragon': dragon,
+                }
+        else:
+            datos = {
+                'message': "pokemons not found :("
                 }
         return JsonResponse(datos)
