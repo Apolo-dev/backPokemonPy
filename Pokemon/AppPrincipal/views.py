@@ -4,7 +4,7 @@ from django.views import View
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 import json
-from django.db.models import F
+##from django.db.models import F
 
 
 # importo el modelo
@@ -59,15 +59,34 @@ class AtaquesPokemon(View):
             datos = {
                 'message': "Success",
                 'pokemons':pokemones1,
-                'attacks1': ataquePoke1,
-                'attacks2': ataquePoke2,
-                'attacks3': ataquePoke3,
-                'attacks4': ataquePoke4,
-                'attacks5': ataquePoke5,
-                'attacks6': ataquePoke6,
-                'attacks7': ataquePoke7,
-                'attacks8': ataquePoke8,
-                }
+                'ataques': [
+                    {
+                        'attacks1': ataquePoke1
+                    },
+                    {
+                        'attacks2': ataquePoke2
+                    },
+                    {
+                        'attacks3': ataquePoke3,
+                    },
+                    {
+                        'attacks4': ataquePoke4,
+                    },
+                    {
+                        'attacks5': ataquePoke5,
+                    },
+                    {
+                        'attacks6': ataquePoke6,
+                    },
+                    {
+                        'attacks7': ataquePoke7,
+                    },
+                    {
+                        'attacks8': ataquePoke8,
+                    }
+                ]
+                
+}
         else:
             datos = {
                 'message': "attacks not found :("
