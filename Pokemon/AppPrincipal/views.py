@@ -132,12 +132,21 @@ class DragonPokemon(View):
 
     def get(self, request):
         dragon = list(Pokemon.objects.filter(tipe_pokemon ='Dragon').values())
+        ataqueAltaria = list(Ataque.objects.filter(pokemon__name_pokemon = 'Altaria').values())
+        ataqueAerodactyl = list(Ataque.objects.filter(pokemon__name_pokemon = 'Aerodactyl').values())
+        ataqueDragon = list(Ataque.objects.filter(pokemon__tipe_pokemon = 'Dragon').values())
         
         #print(ataquesPokemon)
-        if len(dragon) > 0:
+        if len(dragon) > 0 and len(ataqueAltaria) > 0 and len(ataqueAerodactyl) > 0:
             datos = {
                 'message': "Success",
                 'pokemonDragon': dragon,
+                'ataques': [
+                    {'ataqueAltaria':ataqueAltaria},
+                    {'ataqueAerodactyl' : ataqueAerodactyl},
+                ],
+                'ataqueDragon': ataqueDragon
+                
                 }
         else:
             datos = {
