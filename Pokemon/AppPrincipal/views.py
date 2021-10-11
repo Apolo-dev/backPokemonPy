@@ -142,8 +142,8 @@ class DragonPokemon(View):
                 'message': "Success",
                 'pokemonDragon': dragon,
                 'ataques': [
-                    {'ataqueAltaria':ataqueAltaria},
-                    {'ataqueAerodactyl' : ataqueAerodactyl},
+                    {'ataqueAltaria' : ataqueAltaria},
+                    {'ataqueAerodactyl' : ataqueAerodactyl,}
                 ],
                 'ataqueDragon': ataqueDragon
                 
