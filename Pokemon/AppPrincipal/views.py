@@ -134,6 +134,8 @@ class DragonPokemon(View):
         dragon = list(Pokemon.objects.filter(tipe_pokemon ='Dragon').values())
         ataqueAltaria = list(Ataque.objects.filter(pokemon__name_pokemon = 'Altaria').values())
         ataqueAerodactyl = list(Ataque.objects.filter(pokemon__name_pokemon = 'Aerodactyl').values())
+        ataqueDragonite = list(Ataque.objects.filter(pokemon__name_pokemon = 'Dragonite').values())
+
         
         
         #print(ataquesPokemon)
@@ -143,7 +145,8 @@ class DragonPokemon(View):
                 'pokemonDragon': dragon,
                 'ataques': [
                     {'at' : ataqueAltaria},
-                    {'at' : ataqueAerodactyl}
+                    {'at' : ataqueAerodactyl},
+                    {'at' : ataqueDragonite},
                 ],
                 
                 }
