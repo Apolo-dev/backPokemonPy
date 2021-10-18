@@ -5,11 +5,75 @@ from django.views import View
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 import json
-##from django.db.models import F
-
-
-# importo el modelo
 from .models import Ataque, Pokemon
+##from django.db.models import F
+from rest_framework import serializers, viewsets
+from .serializers import PokemonSerializer, AtaqueSerializer
+
+class DragonViewset(viewsets.ModelViewSet):
+    queryset = Pokemon.objects.filter(type_pokemon = 'Dragon')
+    serializer_class = PokemonSerializer
+
+class FuegoViewset(viewsets.ModelViewSet):
+    queryset = Pokemon.objects.filter(type_pokemon = 'Fuego')
+    serializer_class = PokemonSerializer
+
+class TierraViewset(viewsets.ModelViewSet):
+    queryset = Pokemon.objects.filter(type_pokemon = 'Tierra')
+    serializer_class = PokemonSerializer
+
+class AguaViewset(viewsets.ModelViewSet):
+    queryset = Pokemon.objects.filter(type_pokemon = 'Agua')
+    serializer_class = PokemonSerializer
+
+class ElectricoViewset(viewsets.ModelViewSet):
+    queryset = Pokemon.objects.filter(type_pokemon = 'Electrico')
+    serializer_class = PokemonSerializer
+
+class HieloViewset(viewsets.ModelViewSet):
+    queryset = Pokemon.objects.filter(type_pokemon = 'Hielo')
+    serializer_class = PokemonSerializer
+
+class PsiquicoViewset(viewsets.ModelViewSet):
+    queryset = Pokemon.objects.filter(type_pokemon = 'Psiquico')
+    serializer_class = PokemonSerializer
+
+class LuchaViewset(viewsets.ModelViewSet):
+    queryset = Pokemon.objects.filter(type_pokemon = 'Lucha')
+    serializer_class = PokemonSerializer
+
+class FantasmaViewset(viewsets.ModelViewSet):
+    queryset = Pokemon.objects.filter(type_pokemon = 'Fantasma')
+    serializer_class = PokemonSerializer
+
+
+
+class AtaqueViewset(viewsets.ModelViewSet):
+    queryset = Ataque.objects.filter(pokemon__name_pokemon = 'Dragonite')
+    serializer_class = AtaqueSerializer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 class PrincipalPokemon(View):

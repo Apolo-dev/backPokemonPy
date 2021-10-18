@@ -13,6 +13,7 @@ pylint-celery = "*"
 mysqlclient = "*"
 pymysql = "*"
 django-cors-headers = "*"
+djangorestframework = "*"
 
 [dev-packages]
 

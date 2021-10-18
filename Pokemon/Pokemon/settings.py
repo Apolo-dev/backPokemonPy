@@ -29,7 +29,8 @@ INSTALLED_APPS = [
     'AppPrincipal',
     'AppEquipo',
     'AppEnemigo',
-    'AppUser'
+    'AppUser',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
