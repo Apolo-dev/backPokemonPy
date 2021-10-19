@@ -8,7 +8,7 @@ import json
 from .models import Ataque, Pokemon
 ##from django.db.models import F
 from rest_framework import viewsets
-from .serializers import PokemonSerializer, AtaqueSerializer
+from .serializers import PokemonSerializer
 
 class DragonViewset(viewsets.ModelViewSet):
     queryset = Pokemon.objects.filter(type_pokemon = 'Dragon')
@@ -52,9 +52,7 @@ class VoladorViewset(viewsets.ModelViewSet):
 
 
 
-class AtaqueViewset(viewsets.ModelViewSet):
-    queryset = Ataque.objects.filter(pokemon__name_pokemon = 'Dragonite')
-    serializer_class = AtaqueSerializer
+
 
 
 

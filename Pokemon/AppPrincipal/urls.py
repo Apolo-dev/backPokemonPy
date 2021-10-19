@@ -1,7 +1,7 @@
 from django.urls import path, include
 
 #from Pokemon.AppPrincipal.models import Ataque
-from .views import AtaqueViewset, FantasmaViewset, HieloViewset, LuchaViewset, PrincipalPokemon, AtaquesPokemon, FuegoPokemon, DragonPokemon, DragonViewset, FuegoViewset, PsiquicoViewset, TierraViewset, AguaViewset, ElectricoViewset, VoladorViewset
+from .views import FantasmaViewset, HieloViewset, LuchaViewset, PrincipalPokemon, AtaquesPokemon, FuegoPokemon, DragonPokemon, DragonViewset, FuegoViewset, PsiquicoViewset, TierraViewset, AguaViewset, ElectricoViewset, VoladorViewset
 from rest_framework import routers
 
 router = routers.DefaultRouter()
@@ -16,7 +16,7 @@ router.register('lucha', LuchaViewset)
 router.register('fantasma', FantasmaViewset)
 router.register('volador', VoladorViewset)
 
-router.register('ataque', AtaqueViewset )
+
 
 
 urlpatterns=[
