@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'AppEnemigo',
     'AppUser',
     'rest_framework',
+    
 ]
 
 MIDDLEWARE = [

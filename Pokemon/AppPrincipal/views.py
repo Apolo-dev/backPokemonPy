@@ -7,7 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 from .models import Ataque, Pokemon
 ##from django.db.models import F
-from rest_framework import serializers, viewsets
+from rest_framework import viewsets
 from .serializers import PokemonSerializer, AtaqueSerializer
 
 class DragonViewset(viewsets.ModelViewSet):
@@ -44,6 +44,10 @@ class LuchaViewset(viewsets.ModelViewSet):
 
 class FantasmaViewset(viewsets.ModelViewSet):
     queryset = Pokemon.objects.filter(type_pokemon = 'Fantasma')
+    serializer_class = PokemonSerializer
+
+class VoladorViewset(viewsets.ModelViewSet):
+    queryset = Pokemon.objects.filter(type_pokemon = 'Volador')
     serializer_class = PokemonSerializer
 
 
