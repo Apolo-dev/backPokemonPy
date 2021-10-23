@@ -16,6 +16,7 @@ django-cors-headers = "*"
 djangorestframework = "*"
 markdown = "*"
 django-filter = "*"
+django-simple-history = "*"
 
 [dev-packages]
 
