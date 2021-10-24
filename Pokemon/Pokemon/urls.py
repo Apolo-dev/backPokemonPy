@@ -10,6 +10,7 @@ from AppUser.login import Login
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('AppPrincipal.urls')),
+    path('api/', include('AppUser.urls')),
     path('',Login.as_view(), name = 'login')
 ]
 
