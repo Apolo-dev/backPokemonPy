@@ -1,22 +1,17 @@
-from django.shortcuts import render
-from rest_framework.relations import ManyRelatedField
 from AppUser.models import User
-from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from AppUser.serializer import UserSerializer
+from AppUser.serializer import UserSerializer, UserListSerializer
+from rest_framework.views import APIView
 
 
-
-# Create your views here.
-@api_view(['GET', 'POST'])
-def registro(request):
-
-    if request.method == 'GET':
+class Registrar(APIView):
+    
+    def get(self, request):
         users = User.objects.all()
-        users_serializers = UserSerializer(users,many=True)
+        users_serializers = UserListSerializer(users, many=True)
         return Response(users_serializers.data)
 
-    elif request.method == 'POST':
+    def post(self, request, *args, **kwargs):
         user_serializer = UserSerializer(data = request.data)
         if user_serializer.is_valid():
             user_serializer.save()
@@ -25,7 +20,7 @@ def registro(request):
 
 
 
-    
+
 
 
         
