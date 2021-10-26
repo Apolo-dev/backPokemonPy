@@ -6,13 +6,14 @@ from django.conf.urls.static import static
 
 
 # para el login
-from AppUser.login import Login
+from AppUser.login import Login, Logout
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('AppPrincipal.urls')),
     path('api/', include('AppUser.urls')),
-    path('',Login.as_view(), name = 'login')
+    path('',Login.as_view(), name = 'login'),
+    path('logout',Logout.as_view(), name = 'Logout')
 ]
 
 
