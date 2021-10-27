@@ -13,7 +13,7 @@ urlpatterns = [
     path('api/', include('AppPrincipal.urls')),
     path('api/', include('AppUser.urls')),
     path('',Login.as_view(), name = 'login'),
-    path('logout',Logout.as_view(), name = 'Logout')
+    path('logout/',Logout.as_view(), name = 'Logout'),
 ]
 
 

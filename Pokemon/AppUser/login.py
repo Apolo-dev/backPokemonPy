@@ -26,6 +26,12 @@ class Login(ObtainAuthToken):
                         'message': 'Login Success!'
                     }, status = status.HTTP_201_CREATED)
                 else:
+                    all_sessions = Session.objects.filter(expire_date__gte = datetime.now())
+                    if all_sessions.exists():
+                        for session in all_sessions:
+                            session_data = session.get_decoded()
+                            if user.id == int(session_data.get('_auth_user_id')):
+                                session.delete()
                     token.delete()
                     token = Token.objects.create(user = user)
                     return Response({
@@ -33,6 +39,7 @@ class Login(ObtainAuthToken):
                         'user': user_serializer.data,
                         'message': 'Login Success 2!'
                     }, status = status.HTTP_201_CREATED)
+
             else:
                 return Response({'error': 'No esta autorizado!'}, status = status.HTTP_401_UNAUTHORIZED)
         else:
@@ -42,7 +49,8 @@ class Login(ObtainAuthToken):
 class Logout(APIView):
     def post(self, request, *args, **kwargs):
         try:
-            token = request.POST.post('token')
+            token = request.GET.get('token')
+            print(token)
             token = Token.objects.filter(key = token).first()
         
             if token:
@@ -53,9 +61,9 @@ class Logout(APIView):
                         session_data = session.get_decoded()
                         if user.id == int(session_data.get('_auth_user_id')):
                             session.delete()
-                session_message = 'Sesion de usuario eliminada'
 
                 token.delete()
+                session_message = 'Sesion de usuario eliminada'
                 token_message = 'token eliminado'
                 return Response({'token_message': token_message, 'session message': session_message}, status = status.HTTP_200_OK)
             return Response({'error': 'No se ha encontrado al usuario'}, status = status.HTTP_400_BAD_REQUEST)
