@@ -1,3 +1,4 @@
+from typing import ClassVar
 from django import views
 from django.shortcuts import render
 from django.http.response import JsonResponse
@@ -49,8 +50,6 @@ class FantasmaViewset(viewsets.ModelViewSet):
 class VoladorViewset(viewsets.ModelViewSet):
     queryset = Pokemon.objects.filter(type_pokemon = 'Volador')
     serializer_class = PokemonSerializer
-
-
 
 
 

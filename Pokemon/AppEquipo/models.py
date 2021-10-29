@@ -7,7 +7,6 @@ from AppUser.models import User
 
 class Equipo(models.Model):
     pokemones = models.ManyToManyField(Pokemon, verbose_name='pokemones')
-    ataques = models.ManyToManyField(Ataque, verbose_name='ataques')
     usuarios = models.ForeignKey(User, on_delete=models.CASCADE)
     
 

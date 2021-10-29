@@ -19,6 +19,8 @@ router.register('volador', VoladorViewset)
 
 
 
+
+
 urlpatterns=[
     path('pokemons/', PrincipalPokemon.as_view(), name='pokemons'),
     path('pokemons/<int:id>', PrincipalPokemon.as_view(), name='pokemons_process'),

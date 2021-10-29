@@ -70,4 +70,3 @@ class Logout(APIView):
         except:
             return Response({'error': 'No se ha encontrado el token en la peticion'}, status = status.HTTP_409_CONFLICT)
 
-        
